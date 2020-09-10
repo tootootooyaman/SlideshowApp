@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBAction func enlargeImage(_ sender: Any) {
+    }
+    
+    @IBAction func nextImage(_ sender: Any) {
+    }
+    @IBAction func prevImage(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
