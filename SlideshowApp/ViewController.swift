@@ -77,10 +77,10 @@ class ViewController: UIViewController {
             hiddenPrev.isHidden = true
             hiddenNext.isEnabled = false
             hiddenPrev.isEnabled = false
-            unableEnlarge.isEnabled = false
             
             if self.timer == nil {
                 self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+                
             }
         } else {
             button.setTitle("再生", for: .normal)
@@ -88,7 +88,6 @@ class ViewController: UIViewController {
             hiddenPrev.isHidden = false
             hiddenNext.isEnabled = true
             hiddenPrev.isEnabled = true
-            unableEnlarge.isEnabled = true
             
             if self.timer != nil {
                 self.timer.invalidate()
@@ -110,11 +109,19 @@ class ViewController: UIViewController {
         let resultViewController:ResultViewController = segue.destination as! ResultViewController
         
         resultViewController.enlarge = imageArray[counter]
-    
+        if self.timer != nil {
+                       self.timer.invalidate()
+                       self.timer = nil
+        }
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
-       }
+        if playOrPause == true {
+            if self.timer == nil {
+                       self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+            }
+        }
+    }
       
 
 }
